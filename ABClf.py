@@ -62,6 +62,19 @@ chars_to_remove = {
 }
 
 
+def is_alpha(token: str) -> bool:
+    """Checks if the input string is strictly lowercase without numerals.
+
+    Args:
+        token (str): Input text.
+
+    Returns:
+        bool: Result of checking.
+    """    
+    import re
+    pattern = "^[a-zšđčćž]+$"
+    compiled_pattern = re.compile(pattern)
+    return bool(compiled_pattern.match(token))
 
 def preprocess(s: str) -> str:
     """Removes unusual characters and lowercases the string.
@@ -112,19 +125,6 @@ def count_variants(s: str, lex: dict):
             per_token[word] = {"variant": variant, "count": 1}
     return counts, per_token
 
-def is_alpha(token: str) -> bool:
-    """Checks if the input string is strictly lowercase without numerals.
-
-    Args:
-        token (str): Input text.
-
-    Returns:
-        bool: Result of checking.
-    """    
-    import re
-    pattern = "^[a-zšđčćž]+$"
-    compiled_pattern = re.compile(pattern)
-    return bool(compiled_pattern.match(token))
 
 
 def counts_to_category(counts: dict) -> str:
@@ -161,7 +161,7 @@ def load_lexicon()-> dict:
     return lex
 
 
-def get_variant(text: str) -> str:
+def get_variant(text: str, lex=None) -> str:
     """Quick way to classify text. 
 
     Loads the lexicon, preprocesses the string. Returns the predicted 
@@ -173,7 +173,8 @@ def get_variant(text: str) -> str:
     Returns:
         str: category {'A', 'B', 'UNK', 'MIX'}
     """    
-    lex = load_lexicon()
+    if not lex:
+        lex = load_lexicon()
     variant_detector_count = count_variants(text, lex)[0]
     return counts_to_category(variant_detector_count) 
 
