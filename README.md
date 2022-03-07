@@ -1,13 +1,13 @@
-# American-Brittish-variety-classifier
+# American-British-variety-classifier
 
-A minimalistic spelling and vocabulary based American-vs-Brittish variety classifier.
+A minimalistic spelling- and vocabulary-based American-vs-British variety classifier.
 
 ## Description
 
-This classifier is based on [VarCon dictionary](http://wordlist.aspell.net/varcon/). First the corpus was read and used in its entirety, after which progressive prunings were performed to improve performance.
+This classifier is based on the [VarCon database](http://wordlist.aspell.net/varcon/). First the database was read and used in its entirety, after which progressive prunings were performed to improve performance.
 
 The classifier performs rudimentary preprocessing (some weird character deletion to reduce the odds of discarding non-important words) and then checks all lowercase nonnumerical words if they are present in the dictionary. The final step is assigning variety to the input text, for which we use the following logic:
-* for documents with no identified American on Brittish lexems we return `UNK`, 
+* for documents with no identified American or British lexemes we return `UNK`, 
 * if one variant has more than twice as many identified words as the other, we classify the instance as the more frequent variant,
 * else we classify it as `MIX`.
 
@@ -15,16 +15,20 @@ The classifier performs rudimentary preprocessing (some weird character deletion
 ## Files
 
 Only two files are needed for this tool:
-* `lexicon.pickle`: pickled python dictionary with words and their variety,
+* `lexicon.pickle`: pickled python dictionary with words and their variants,
 * `ABClf.py`: main and helper functions for preprocessing and classifying.
 
 ## Use
 
 Please refer to [`demo.ipynb`](demo.ipynb).
 
-## Copyright of the original varcon corpus
+## Copyright of the original VarCon database
 
-```Copyright 2000-2019 by Kevin Atkinson
+```
+Copyright 2000-2020 by Kevin Atkinson (kevina@gnu.org) and Benjamin
+Titze (btitze@protonmail.ch).
+
+Copyright 2000-2019 by Kevin Atkinson
 
 Permission to use, copy, modify, distribute and sell this array, the
 associated software, and its documentation for any purpose is hereby
