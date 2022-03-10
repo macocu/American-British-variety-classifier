@@ -150,16 +150,18 @@ def counts_to_category(counts: dict) -> str:
         return "MIX"
 
 
-def load_lexicon()-> dict:
+def load_lexicon(balanced=False)-> dict:
     """Loads 'lexicon.pickle'.
-
+    Args:
+        balanced (bool, optional): Whether or not to use balanced lexicon (equal number of A and B keys).
+        Defaults to False. 
     Returns:
         dict: lexicon for variety identification.
-    """    
-    with open("lexicon.pickle", "rb") as f:
+
+    """ 
+    with open(f"lexicon{'_balanced' if balanced else ''}.pickle", "rb") as f:
         lex = pickle.load(f)
     return lex
-
 
 def get_variant(text: str, lex=None) -> str:
     """Quick way to classify text. 
