@@ -18,6 +18,8 @@ Only two files are needed for this tool:
 * `lexicon.pickle`: pickled python dictionary with words and their variants,
 * `ABClf.py`: main and helper functions for preprocessing and classifying.
 
+Later a new file was added, `lexicon_balanced.pickle`. Balanced lexicon contains about the same amount of British and American (US) keywords, which can be more fair in some cases.
+
 ## Use
 
 Please refer to [`demo.ipynb`](demo.ipynb).
