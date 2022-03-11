@@ -22,6 +22,7 @@ Later a new file was added, `lexicon_balanced.pickle`. Balanced lexicon contains
 
 ## Use
 
+
 Please refer to [`demo.ipynb`](demo.ipynb).
 
 ## Copyright of the original VarCon database
