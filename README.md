@@ -6,6 +6,7 @@ A minimalistic spelling- and vocabulary-based American-vs-British variety classi
 
 This classifier is based on the [VarCon database](http://wordlist.aspell.net/varcon/). First the database was read and used in its entirety, after which progressive prunings were performed to improve performance.
 
+
 The classifier performs rudimentary preprocessing (some weird character deletion to reduce the odds of discarding non-important words) and then checks all lowercase nonnumerical words if they are present in the dictionary. The final step is assigning variety to the input text, for which we use the following logic:
 * for documents with no identified American or British lexemes we return `UNK`, 
 * if one variant has more than twice as many identified words as the other, we classify the instance as the more frequent variant,
@@ -24,6 +25,8 @@ Later a new file was added, `lexicon_balanced.pickle`. Balanced lexicon contains
 
 
 Please refer to [`demo.ipynb`](demo.ipynb).
+
+Another demo was prepared by Taja Kuzman and can be run on Kaggle: [https://www.kaggle.com/tajakuz/identifying-american-british-english-variety](https://www.kaggle.com/tajakuz/identifying-american-british-english-variety) .
 
 ## Copyright of the original VarCon database
 
